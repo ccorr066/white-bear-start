@@ -17,6 +17,18 @@
                    />
                    <p class="lead "> Card created!</p>
      </div>
+
+     <div class="bg-danger w-100 d-none py-4 justify-content-center fixed-top"
+     id="overlay-danger">
+     
+       <img 
+                   src="/icons/error.svg"
+                   width="28px" 
+                   style="margin-bottom: 3px;"
+                   class="mr-2"
+                   />
+                   <p class="lead "> Oops! Our bad. Please try again</p>
+     </div>
       <div class="container">
          <div class="row">
             <div class="col-12 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-10 offset-md-1">
@@ -26,7 +38,7 @@
                   alt="White-bear-logo"
                />
                <h3 class="d-inline text-brand ">White Bear</h3>
-               <button class="btn btn-link float-right">Log Out</button> 
+               <a href="index.html" class="btn btn-link float-right">Log Out</a> 
 
                <div class="btn-group d-flex"
                role="navigation"
@@ -58,7 +70,7 @@
                 <div class=" clearfix"></div>
 
 
-                <button class="btn btn-link">Back to answer</button>
+                <button class="btn btn-link" id="create-error">Back to answer</button>
                 
                 <button type="button" class="btn btn-primary btn-lg float-right " id="save-imagery">
                    <img 
