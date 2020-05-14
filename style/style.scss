@@ -11,6 +11,13 @@
 .h4 {
    $h4-font-size: $font-size-base * 1.25;
 }
+.background-image {
+   background-image: url("/images/background-landing.jpg");
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   background-attachment: fixed;
+}
+
 .btn-link {
    padding-left: 0;
    padding-right: 0;
@@ -68,4 +75,12 @@ textarea {
 .bg-success,
 .bg-danger p.lead {
    color: $white;
+}
+.search-border {
+   border-width: $border-width;
+   border-color: $gray-400;
+}
+.select-menu {
+   border-width: $border-width;
+   border-color: $gray-400;
 }
