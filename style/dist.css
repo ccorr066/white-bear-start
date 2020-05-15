@@ -11332,6 +11332,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.h1 {
+  color: #fff;
+}
+
 .background-image {
   background-image: url("/images/background-landing.jpg");
   background-repeat: no-repeat;
