@@ -73,29 +73,75 @@
 
                <p class="float-right mb-5">205/240</p>
                <div class="clearfix"></div>
-               <div class="float-right">
-                  <button class="btn btn-link" id="create-error">
-                     Discard changes
-                  </button>
-                  <button
-                     type="button"
-                     class="btn btn-primary btn-lg float-right"
-                     id="save-imagery"
-                  >
-                     <img
-                        src="/icons/save.svg"
-                        width="20px"
-                        style="margin-bottom: 3px;"
-                        class="mr-2"
-                     />
-                     Save
-                  </button>
+               <a
+                  href="all-cards.html"
+                  type="button"
+                  class="btn btn-link"
+                  style="float: left;"
+               >
+                  Discard changes
+               </a>
+               <div class="float-right"></div>
+               <div class="clearfix"></div>
+               <button
+                  type="button"
+                  class="btn btn-primary btn-lg float-right"
+                  id="save-imagery"
+               >
+                  <img
+                     src="/icons/save.svg"
+                     width="22px"
+                     style="margin-top: -1px;"
+                     class="mr-2"
+                  />
+                  Save
+               </button>
+
+               <h4 class="mt-5 mb-3 text-center text-muted">
+                  Card properties
+               </h4>
+               <div class="row mb-1">
+                  <div class="col-4">
+                     <p class="mb-2 text-muted">Created on:</p>
+                     <p class="mb-2 text-muted">Last attempt:</p>
+                     <p class="mb-2 text-muted">Next attempt:</p>
+                     <p class="mb-2 text-muted">Consecutives:</p>
+                  </div>
+
+                  <div class="col-6 ml-5">
+                     <p class="mb-2">Dec. 21, 2019</p>
+                     <p class="mb-2">Dec. 31, 2019</p>
+                     <p class="mb-2">Jul. 14, 2020</p>
+                     <p class="mb-2">4</p>
+                  </div>
                </div>
-               <p class="text-muted">Card properties</p>
-               <p>Created on: Dec. 24,2019</p>
-               <p>Last attempt: Dec. 31,2019</p>
-               <p>Next attempt: Jul. 14,2020</p>
-               <p>Consecutives: 4</p>
+
+               <!-- Need to fix margins as well as checkbox color -->
+               <div class="row">
+                  <div class="col">
+                     <form>
+                        <div class="custom-control custom-checkbox">
+                           <input
+                              type="checkbox"
+                              class="custom-control-input"
+                              id="customCheck"
+                              name="example1"
+                           />
+                           <label class="custom-control-label" for="customCheck"
+                              >Show delete button</label
+                           >
+                        </div>
+                     </form>
+
+                     <a href="all-cards.html"
+                        ><input
+                           class="btn btn-outline-danger"
+                           type="button"
+                           id="deleteCard"
+                           value="Delete this Card"
+                     /></a>
+                  </div>
+               </div>
             </div>
          </div>
       </div>

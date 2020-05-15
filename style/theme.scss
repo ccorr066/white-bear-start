@@ -178,6 +178,9 @@ $input-btn-padding-x-lg: map-get($spacers, 6);
 $input-btn-font-size-lg: $font-size-base;
 $input-btn-line-height-lg: $line-height-base;
 
+$custom-checkbox-indicator-border-radius: $border-radius;
+$custom-checkbox-indicator-indeterminate-color: $custom-control-indicator-checked-color;
+
 // Buttons
 
 $btn-font-weight: $font-weight-bold;
