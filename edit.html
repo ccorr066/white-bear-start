@@ -81,22 +81,22 @@
                >
                   Discard changes
                </a>
-               <div class="float-right"></div>
+               <div class="float-right">
+                  <button
+                     type="button"
+                     class="btn btn-primary btn-lg"
+                     id="save-imagery"
+                  >
+                     <img
+                        src="/icons/save.svg"
+                        width="22px"
+                        style="margin-top: -1px;"
+                        class="mr-2"
+                     />
+                     Save
+                  </button>
+               </div>
                <div class="clearfix"></div>
-               <button
-                  type="button"
-                  class="btn btn-primary btn-lg float-right"
-                  id="save-imagery"
-               >
-                  <img
-                     src="/icons/save.svg"
-                     width="22px"
-                     style="margin-top: -1px;"
-                     class="mr-2"
-                  />
-                  Save
-               </button>
-
                <h4 class="mt-5 mb-3 text-center text-muted">
                   Card properties
                </h4>
@@ -115,8 +115,6 @@
                      <p class="mb-2">4</p>
                   </div>
                </div>
-
-               <!-- Need to fix margins as well as checkbox color -->
                <div class="row">
                   <div class="col">
                      <form>
@@ -124,10 +122,10 @@
                            <input
                               type="checkbox"
                               class="custom-control-input"
-                              id="customCheck"
+                              id="check-box"
                               name="example1"
                            />
-                           <label class="custom-control-label" for="customCheck"
+                           <label class="custom-control-label" for="check-box"
                               >Show delete button</label
                            >
                         </div>
@@ -137,7 +135,7 @@
                         ><input
                            class="btn btn-outline-danger"
                            type="button"
-                           id="deleteCard"
+                           id="delete"
                            value="Delete this Card"
                      /></a>
                   </div>

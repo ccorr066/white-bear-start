@@ -11418,4 +11418,9 @@ textarea {
   border-color: #a42443;
 }
 
+.custom-control-label::before,
+.custom-control-label::after {
+  background-color: #52535f;
+}
+
 /*# sourceMappingURL=dist.css.map */

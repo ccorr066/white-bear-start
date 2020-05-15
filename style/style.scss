@@ -88,3 +88,8 @@ textarea {
    border-width: $border-width;
    border-color: $danger;
 }
+
+.custom-control-label::before,
+.custom-control-label::after {
+   background-color: $primary;
+}
