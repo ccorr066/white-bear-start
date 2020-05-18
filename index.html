@@ -8,11 +8,147 @@
    <body class="background-image">
       <div class="container">
          <div class="row">
-            <div class="col-12 mb-8 pt-9 ml-7">
+            <div class="col-12 mb-8 pt-6 ml-7">
                <div class="d-flex justify-content-start;">
                   <img src="/images/logo-landing.png" alt="white bear" />
-                  <div class="mt-4 ml-8">
+                  <div class="mt-2 ml-8">
                      <h1 class="d-line text-white">White Bear</h1>
+                  </div>
+               </div>
+               <div class="row mt-5">
+                  <div
+                     class="col-xl-4 offset-xl-1 mb-5 col-lg-5 offset-lg-1 col-md-5 offset-md-1 col-sm-6"
+                  >
+                     <div class="card">
+                        <div class="card-body">
+                           <h2 class="card-title">
+                              Nice to meet you
+                           </h2>
+                           <p style="font-size: 13px;" class="mb-1">
+                              Sign up for White Bear. Free forever.
+                           </p>
+                           <p
+                              style="color: blue; font-size: 13px;"
+                              class="mb-3"
+                              id="sign-up-text"
+                           >
+                              Let's get you signed up.
+                           </p>
+
+                           <button
+                              type="button"
+                              class="btn btn-success btn-block mt-3"
+                              id="sign-up"
+                           >
+                              Sign up
+                           </button>
+
+                           <div id="drop-assign">
+                              <h4 class="text-muted mt-2">Email address</h4>
+                              <input
+                                 class="form-control thick-border"
+                                 type="text"
+                                 required
+                                 id="email-identity"
+                              />
+                              <p
+                                 id="error-email"
+                                 class="mb-4 invalid-feedback"
+                                 style="display: none; font-size: 13px;"
+                              >
+                                 Please enter your email address.
+                              </p>
+                              <h4 class="text-muted">Create a password</h4>
+                              <input
+                                 class="form-control thick-border mb-1"
+                                 type="password"
+                                 required
+                                 id="password-required"
+                              />
+                              <p
+                                 id="password-required"
+                                 class="mb-4 invalid-feedback"
+                                 style="display: none; font-size: 13px;"
+                              >
+                                 Please enter your password.
+                              </p>
+                              <p
+                                 id="invalid-characters"
+                                 class="invalid-feedback"
+                                 style="display: none; font-size: 13px;"
+                              >
+                                 Your password must be at least 9 characters.
+                              </p>
+                              <a
+                                 href="#"
+                                 type="button"
+                                 class="mt-5 btn btn-success btn-block"
+                                 id="letsGo"
+                              >
+                                 Let's go!
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 offset-xl-1 col-lg-5 col-md-5 col-sm-6">
+                     <div class="card">
+                        <div class="card-body">
+                           <h2 class="card-title">
+                              Welcome back
+                           </h2>
+                           <p style="font-size: 13px;" class="mb-5">
+                              Log in with your email address and password.
+                           </p>
+                           <form class="needs-validation">
+                              <h4 class="text-muted">Email address</h4>
+                              <input
+                                 class="form-control thick-border"
+                                 type="text"
+                                 id="welcome-back"
+                                 required
+                              />
+                              <p
+                                 id="warning-welcome"
+                                 class="mb-4 invalid-feedback"
+                                 style="display: none; font-size: 13px;"
+                              >
+                                 Please enter your email address.
+                              </p>
+                              <h4 class="text-muted mt-2">Password</h4>
+                              <input
+                                 class="form-control thick-border"
+                                 type="password"
+                                 id="welcome-password"
+                                 required
+                              />
+                              <p
+                                 id="warningWelcomePassword"
+                                 class="mb-4 invalid-feedback"
+                                 style="display: none; font-size: 13px;"
+                              >
+                                 Please enter your password.
+                              </p>
+                              <p
+                                 id="warningWelcomePasswordCharacters"
+                                 class="invalid-feedback"
+                                 style="display: none; font-size: 13px;"
+                              >
+                                 Your password must be at least 9 characters.
+                              </p>
+                              <div class="float-right">
+                                 <a
+                                    href="create-answer.html"
+                                    type="submit"
+                                    class="btn btn-success mt-5 btn-lg"
+                                    id="logIn"
+                                 >
+                                    Log in
+                                 </a>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>

@@ -11332,8 +11332,15 @@ h3 {
     border-color: #dee2e6;
   }
 }
-.h1 {
-  color: #fff;
+h2 {
+  color: black;
+}
+
+p {
+  font-size: 16px;
+  font-family: "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  text-align: none;
+  color: black;
 }
 
 .background-image {
