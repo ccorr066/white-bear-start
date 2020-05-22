@@ -29,31 +29,37 @@ $("#lets-go").click(function () {
    var emailLength = emailInput.length; // .length gets the length of a string
    console.log(emailLength);
 
-   // let emailLength = $("#email-identity").val().length;
-   let passwordLength = $("#password-required").val().length;
+   var passwordInput = $("#password-required").val(); // . val gets the value from the user on the password box
+   console.log(passwordInput);
 
-   if (emailLength === 0) {
-      $("#email-identity").addClass("is-invalid");
-      $("#error-email").html("Please enter your email address.");
+   var passwordLength = passwordInput.length; // .length grabs the amount of characters  of string
+   console.log(passwordLength);
+
+   if (emailInput === 0) {
+      // make sure if emailInput equals 0, then the if statement will run test under its condition
+      $("#email-identity").addClass("is-invalid"); //.addClass will pull up the id from the html. then the in-valid will trigger the empty field box
+      $("#error-email").html("Please enter your email address."); // error message pop up in red if there is no characters
    } else {
-      $("#email-identity").removeClass("is-invalid");
-      $("#email-identity").addClass("is-valid");
-      $("#error-email").html("");
+      // if the conditon on the if are not met, then else will run test
+      $("#email-identity").removeClass("is-invalid"); //. removeClass will take down whatever is inside of the parathesis
+      $("#email-identity").addClass("is-valid"); // .addClass will take is-valid and let the email box work properly
+      $("#error-email").html(""); // the error message will not appear.
    }
-   if (passwordLength === 0) {
+   if (passwordInput === 0) {
+      // make sure if passwordInput equals 0 the if statement will run test under its condition
       $("#password-required").addClass("is-invalid");
       $("#invalid-characters").html(
          "Your password must be at least 9 characters."
       );
    } else {
-      $("#password-required").removeClass("is-invalid");
-      $("#password-required").addClass("is-valid");
-      $("#invalid-characters").html("");
+      // if the condition on the if are not met, then else will run test
+      $("#password-required").removeClass("is-invalid"); // will remove the bootstrap error class
+      $("#password-required").addClass("is-valid"); // will validate the password box to work
+      $("#invalid-characters").html(""); // wont display any error message
    }
 });
-
 $("#textBox").keyup(function () {
-   let textAreaCount = $("#textBox").val().length;
+   var textAreaCount = $("#textBox").val().length;
    $("#count").html(`${textAreaCount}/240`);
    if (textAreaCount > 240) {
       $("#count").addClass("text-danger");
