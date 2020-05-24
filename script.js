@@ -35,8 +35,8 @@ $("#lets-go").click(function () {
    var passwordLength = passwordInput.length; // .length grabs the amount of characters  of string
    console.log(passwordLength);
 
-   if (emailInput === 0) {
-      // make sure if emailInput equals 0, then the if statement will run test under its condition
+   if (emailLength === 0) {
+      // make sure if emailLength equals 0, then the if statement will run test under its condition
       $("#email-identity").addClass("is-invalid"); //.addClass will pull up the id from the html. then the in-valid will trigger the empty field box
       $("#error-email").html("Please enter your email address."); // error message pop up in red if there is no characters
    } else {
@@ -47,10 +47,17 @@ $("#lets-go").click(function () {
    }
    if (passwordInput === 0) {
       // make sure if passwordInput equals 0 the if statement will run test under its condition
-      $("#password-required").addClass("is-invalid");
+      $("#password-required").addClass("is-invalid"); // addClass will take is-valid and let the password box work properly
       $("#invalid-characters").html(
          "Your password must be at least 9 characters."
-      );
+      ); // error message will appear
+   } else if (passwordInput.length < 9) {
+      // make sure the password charcter has to be over 9. if not the else if will run test
+
+      $("#password-required").addClass("is-invalid"); //addClass will take is-valid and let the password box work properly
+      $("#invalid-characters").html(
+         "Your password must be at least 9 characters."
+      ); // error message will appear
    } else {
       // if the condition on the if are not met, then else will run test
       $("#password-required").removeClass("is-invalid"); // will remove the bootstrap error class
