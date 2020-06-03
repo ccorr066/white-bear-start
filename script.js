@@ -1,3 +1,5 @@
+// this for the review answer html page.
+
 $("#save-imagery").click(function () {
    $("#overlay-success").toggleClass("d-flex d-none");
 });
@@ -14,6 +16,8 @@ $("#check-box").click(function () {
 
 $("#drop-assign, #sign-up-text").hide();
 
+// for the sign up button in the index page
+
 $("#sign-up").click(function () {
    $("#drop-assign, #sign-up-text").slideDown("#drop-assign, #sign-up-text");
 });
@@ -22,18 +26,23 @@ $("#sign-up").click(function () {
    $("#sign-up").hide();
 });
 
+// this function work for the inside of the sign up card
+
 $("#lets-go").click(function () {
-   var emailInput = $("#email-identity").val(); // .val gets the value of the user entered
+   let emailInput = $("#email-identity").val(); // .val gets the value of the user entered
    console.log(emailInput);
 
-   var emailLength = emailInput.length; // .length gets the length of a string
+   let emailLength = emailInput.length; // .length gets the length of a string
    // console.log(emailLength);
 
-   var passwordInput = $("#password-required").val(); // . val gets the value from the user on the password box
+   let passwordInput = $("#password-required").val(); // . val gets the value from the user on the password box
    console.log(passwordInput);
 
-   var passwordLength = passwordInput.length; // .length grabs the amount of characters  of string
+   let passwordLength = passwordInput.length; // .length grabs the amount of characters  of string
    // console.log(passwordLength);
+
+   const emailSplit = emailInput.split("@")[0];
+   console.log(emailSplit);
 
    if (emailLength === 0) {
       // make sure if emailLength equals 0, then the if statement will run test under its condition
@@ -57,6 +66,11 @@ $("#lets-go").click(function () {
       $("#invalid-characters").html(
          "Your password must be at least 9 characters."
       ); // error message will appear
+   } else if (passwordInput === emailSplit) {
+      $("#password-required").addClass("is-invalid");
+      $("#invalid-characters").html(
+         "Your email address cannot be used in your password"
+      );
    } else {
       // if the condition on the if are not met, then else will run test
       $("#password-required").removeClass("is-invalid"); // will remove the bootstrap error class
@@ -64,6 +78,8 @@ $("#lets-go").click(function () {
       $("#invalid-characters").html(""); // wont display any error message
    }
 });
+
+// this for the create-imgagery html page. keeps count on how many characters are placed from the user.
 $("#textBox").keyup(function () {
    var textAreaCount = $("#textBox").val().length;
    $("#count").html(`${textAreaCount}/240`);
