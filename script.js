@@ -1,8 +1,8 @@
 // this for the review answer html page.
 
-$("#save-imagery").click(function () {
-   $("#overlay-success").toggleClass("d-flex d-none");
-});
+// //$("#save-imagery").click(function () {
+//    $("#overlay-success").toggleClass("d-flex d-none");
+// });
 
 $("#create-error").click(function () {
    $("#overlay-danger").toggleClass("d-flex d-none");
@@ -26,6 +26,42 @@ $("#sign-up").click(function () {
    $("#sign-up").hide();
 });
 
+function addPadding(num) {
+   if (String(num).length < 2) {
+      return "0" + String(num);
+   } else {
+      return num;
+   }
+}
+let idNumber = "";
+let allTodaysDate = "";
+function getDate() {
+   let todaysDate = new Date();
+   //grabbing each part of the date from the date object using dot notation
+   let todaysYear = todaysDate.getYear() - 100;
+   let todaysMonth = todaysDate.getMonth() + 1; //needs to add one because it is zero indexed
+   let todaysDay = todaysDate.getDate();
+   let todaysHour = todaysDate.getHours();
+   let todaysMin = todaysDate.getMinutes();
+   let todaysSec = todaysDate.getSeconds();
+   let todaysMilli = todaysDate.getMilliseconds();
+   allTodaysDate =
+      "" + //turns it into a readable string
+      addPadding(todaysMonth) +
+      addPadding(todaysDay) +
+      addPadding(todaysYear) +
+      addPadding(todaysHour) +
+      addPadding(todaysMin) +
+      addPadding(todaysSec);
+   console.log(allTodaysDate);
+
+   // _id should have millseconds concatenating with a rand num between 000 & 999
+   var randomMilli = new Date().getMilliseconds().toString().padStart(3, "0"); //https://stackoverflow.com/a/50110996 will always produce 3 digits
+
+   var randNumberG = Math.floor(Math.random() * 900) + 100; //https://stackoverflow.com/a/43914168 // should generate random number betweeen 000-999
+
+   idNumber = randomMilli + randNumberG; /// log should show 6 digits (millis + randomnumber)
+}
 // this function work for the inside of the sign up card
 
 $("#lets-go").click(function () {
@@ -40,9 +76,6 @@ $("#lets-go").click(function () {
 
    let passwordLength = passwordInput.length; // .length grabs the amount of characters  of string
    // console.log(passwordLength);
-
-   const emailSplit = emailInput.split("@")[0];
-   console.log(emailSplit);
 
    if (emailLength === 0) {
       // make sure if emailLength equals 0, then the if statement will run test under its condition
@@ -66,26 +99,64 @@ $("#lets-go").click(function () {
       $("#invalid-characters").html(
          "Your password must be at least 9 characters."
       ); // error message will appear
-   } else if (passwordInput === emailSplit) {
+   } else if (passwordInput === emailInput.split("@")[0]) {
       $("#password-required").addClass("is-invalid");
       $("#invalid-characters").html(
          "Your email address cannot be used in your password"
       );
    } else {
       // if the condition on the if are not met, then else will run test
+      getDate();
       $("#password-required").removeClass("is-invalid"); // will remove the bootstrap error class
       $("#password-required").addClass("is-valid"); // will validate the password box to work
       $("#invalid-characters").html(""); // wont display any error message
    }
+
+   console.log({
+      _id: idNumber,
+      email: emailInput,
+      password: passwordInput,
+      CreatedOn: allTodaysDate,
+   });
 });
 
-// this for the create-imgagery html page. keeps count on how many characters are placed from the user.
+// this for the create-answer html page. keeps count on how many characters are placed from the user.
 $("#textBox").keyup(function () {
-   var textAreaCount = $("#textBox").val().length;
+   let textAreaCount = $("#textBox").val().length;
    $("#count").html(`${textAreaCount}/240`);
    if (textAreaCount > 240) {
       $("#count").addClass("text-danger");
    } else {
       $("#count").removeClass("text-danger");
+   }
+});
+
+// create-imagery html page
+$("#textImagery").keyup(function () {
+   let textAreaCount = $("#textImagery").val().length;
+   $("#imageryCount").html(`${textAreaCount}/240`);
+   if (textAreaCount > 240) {
+      $("#imageryCount").addClass("text-danger");
+   } else {
+      $("#imageryCount").removeClass("text-danger");
+   }
+});
+
+$("#save-imagery").click(function () {
+   let textAreaCount = $("#textImagery").val().length;
+   let textArea = $("#textImagery").val();
+   if (textAreaCount !== 0 && textAreaCount <= 240) {
+      getDate();
+
+      console.log({
+         _id: idNumber,
+         imagery: `?x=${encodeURIComponent(textArea)}`,
+         answer:
+            "The syntax for making a comment in HTML is <!-- Mike's comment here -->",
+         levelNum: 1,
+         successfulAttemptsNum: 0,
+         createdOn: allTodaysDate,
+         lastAttemptedOn: allTodaysDate, // same as createdOn
+      });
    }
 });
