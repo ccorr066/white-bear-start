@@ -38,13 +38,21 @@ let allTodaysDate = "";
 function getDate() {
    let todaysDate = new Date();
    //grabbing each part of the date from the date object using dot notation
-   let todaysYear = todaysDate.getYear() - 100;
+   let todaysYear = todaysDate.getYear() - 100; // subtract getYear by 100 because it spits out 3 digit number if you don't
+   console.log(todaysYear);
    let todaysMonth = todaysDate.getMonth() + 1; //needs to add one because it is zero indexed
+   console.log(todaysMonth);
    let todaysDay = todaysDate.getDate();
+   console.log(todaysDay);
    let todaysHour = todaysDate.getHours();
+   console.log(todaysHour);
    let todaysMin = todaysDate.getMinutes();
+   console.log(todaysMin);
    let todaysSec = todaysDate.getSeconds();
-   let todaysMilli = todaysDate.getMilliseconds();
+   console.log(todaysSec);
+   let todaysMilli = todaysDate.getMilliseconds().toString();
+   console.log(todaysMilli);
+
    allTodaysDate =
       "" + //turns it into a readable string
       addPadding(todaysMonth) +
@@ -56,11 +64,10 @@ function getDate() {
    console.log(allTodaysDate);
 
    // _id should have millseconds concatenating with a rand num between 000 & 999
-   var randomMilli = new Date().getMilliseconds().toString().padStart(3, "0"); //https://stackoverflow.com/a/50110996 will always produce 3 digits
-
-   var randNumberG = Math.floor(Math.random() * 900) + 100; //https://stackoverflow.com/a/43914168 // should generate random number betweeen 000-999
-
-   idNumber = randomMilli + randNumberG; /// log should show 6 digits (millis + randomnumber)
+   let milli = todaysMilli.padStart(3, "0"); // will always produce 3 digits
+   let randNumber = Math.floor(Math.random() * 1000); // should generate random number betweeen 000-999
+   console.log();
+   idNumber = milli + randNumber; /// log should show 6 digits (millis + randomnumber)
 }
 // this function work for the inside of the sign up card
 
@@ -150,7 +157,7 @@ $("#save-imagery").click(function () {
 
       console.log({
          _id: idNumber,
-         imagery: `?x=${encodeURIComponent(textArea)}`,
+         imagery: textArea,
          answer:
             "The syntax for making a comment in HTML is <!-- Mike's comment here -->",
          levelNum: 1,
