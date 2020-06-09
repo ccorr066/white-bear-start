@@ -27,13 +27,14 @@ $("#sign-up").click(function () {
 });
 
 function addPadding(num) {
+   // turning num into String. String is a constructor.
    if (String(num).length < 2) {
       return "0" + String(num);
    } else {
       return num;
    }
 }
-let idNumber = "";
+let idNumber = ""; //
 let allTodaysDate = "";
 function getDate() {
    let todaysDate = new Date();
@@ -64,7 +65,7 @@ function getDate() {
    console.log(allTodaysDate);
 
    // _id should have millseconds concatenating with a rand num between 000 & 999
-   let milli = todaysMilli.padStart(3, "0"); // will always produce 3 digits
+   let milli = todaysMilli.padStart(3, "0"); // will always produce 3 digits. padStart is a string
    let randNumber = Math.floor(Math.random() * 1000); // should generate random number betweeen 000-999
    console.log();
    idNumber = milli + randNumber; /// log should show 6 digits (millis + randomnumber)
@@ -129,8 +130,8 @@ $("#lets-go").click(function () {
 
 // this for the create-answer html page. keeps count on how many characters are placed from the user.
 $("#textBox").keyup(function () {
-   let textAreaCount = $("#textBox").val().length;
-   $("#count").html(`${textAreaCount}/240`);
+   let textAreaCount = $("#textBox").val().length; //values of form elements such as input, select and textarea.
+   $("#count").html(`${textAreaCount}/240`); // reference to the html page, and keeps count of the textareacount. textareacount is a placeholder.
    if (textAreaCount > 240) {
       $("#count").addClass("text-danger");
    } else {
