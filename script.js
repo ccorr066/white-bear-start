@@ -56,9 +56,9 @@ function getDate() {
 
    allTodaysDate =
       "" + //turns it into a readable string
+      addPadding(todaysYear) +
       addPadding(todaysMonth) +
       addPadding(todaysDay) +
-      addPadding(todaysYear) +
       addPadding(todaysHour) +
       addPadding(todaysMin) +
       addPadding(todaysSec);
@@ -84,6 +84,7 @@ $("#lets-go").click(function () {
 
    let passwordLength = passwordInput.length; // .length grabs the amount of characters  of string
    // console.log(passwordLength);
+   let localPart = emailInput.split("@")[0];
 
    if (emailLength === 0) {
       // make sure if emailLength equals 0, then the if statement will run test under its condition
@@ -107,7 +108,7 @@ $("#lets-go").click(function () {
       $("#invalid-characters").html(
          "Your password must be at least 9 characters."
       ); // error message will appear
-   } else if (passwordInput === emailInput.split("@")[0]) {
+   } else if (passwordInput.indexOf(localPart) !== -1) {
       $("#password-required").addClass("is-invalid");
       $("#invalid-characters").html(
          "Your email address cannot be used in your password"
