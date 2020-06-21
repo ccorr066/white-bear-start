@@ -81,15 +81,18 @@ $("#lets-go").click(function () {
 
    let passwordInput = $("#password-required").val(); // . val gets the value from the user on the password box
    console.log(passwordInput);
-
+   console.log("includes", passwordInput.includes(commonPasswords));
    let passwordLength = passwordInput.length; // .length grabs the amount of characters  of string
    // console.log(passwordLength);
-   let localPart = emailInput.split("@")[0];
+   let localPart = emailInput.split("@")[0]; //
 
    if (emailLength === 0) {
       // make sure if emailLength equals 0, then the if statement will run test under its condition
       $("#email-identity").addClass("is-invalid"); //.addClass will pull up the id from the html. then the in-valid will trigger the empty field box
       $("#error-email").html("Please enter your email address."); // error message pop up in red if there is no characters
+   } else if (emailLength) {
+      $("#email-identity").addClass("is-invalid");
+      $("#error-email").html("You need to enter at least 3 unique characters");
    } else {
       // if the conditon on the if are not met, then else will run test
       $("#email-identity").removeClass("is-invalid"); //. removeClass will take down whatever is inside of the parathesis
@@ -102,7 +105,7 @@ $("#lets-go").click(function () {
       $("#password-required").addClass("is-invalid"); // addClass will take is-valid and let the password box work properly
       $("#invalid-characters").html("Please enter password."); // error message will appear
    } else if (passwordInput.length < 9) {
-      // make sure the password charcter has to be over 9. if not the else if will run test
+      // make sure the password character has to be over 9. if not the else if will run test
 
       $("#password-required").addClass("is-invalid"); //addClass will take is-valid and let the password box work properly
       $("#invalid-characters").html(
@@ -113,6 +116,9 @@ $("#lets-go").click(function () {
       $("#invalid-characters").html(
          "Your email address cannot be used in your password"
       );
+   } else if (commonPasswords.includes(passwordInput)) {
+      $("#password-required").addClass("is-invalid");
+      $("#invalid-characters").html("You've entered a common password");
    } else {
       // if the condition on the if are not met, then else will run test
       getDate();
@@ -159,9 +165,12 @@ $("#save-imagery").click(function () {
 
       console.log({
          _id: idNumber,
-         imagery: textArea,
-         answer:
-            "The syntax for making a comment in HTML is <!-- Mike's comment here -->",
+         imagery: `?x=${encodeURIComponent(
+            "A delicious shishkebab but the first bite of meat after the pointy end is spicy & makes an exclamation point appear over my head like in a JRPG."
+         )}`,
+         answer: `?x=${encodeURIComponent(
+            "The syntax for making a comment in HTML is <!-- Mike's comment here -->"
+         )}`,
          levelNum: 1,
          successfulAttemptsNum: 0,
          createdOn: allTodaysDate,
