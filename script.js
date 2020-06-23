@@ -40,19 +40,19 @@ function getDate() {
    let todaysDate = new Date();
    //grabbing each part of the date from the date object using dot notation
    let todaysYear = todaysDate.getYear() - 100; // subtract getYear by 100 because it spits out 3 digit number if you don't
-   console.log(todaysYear);
+   // console.log(todaysYear);
    let todaysMonth = todaysDate.getMonth() + 1; //needs to add one because it is zero indexed
-   console.log(todaysMonth);
+   // console.log(todaysMonth);
    let todaysDay = todaysDate.getDate();
-   console.log(todaysDay);
+   // console.log(todaysDay);
    let todaysHour = todaysDate.getHours();
-   console.log(todaysHour);
+   // console.log(todaysHour);
    let todaysMin = todaysDate.getMinutes();
-   console.log(todaysMin);
+   // console.log(todaysMin);
    let todaysSec = todaysDate.getSeconds();
-   console.log(todaysSec);
+   // console.log(todaysSec);
    let todaysMilli = todaysDate.getMilliseconds().toString();
-   console.log(todaysMilli);
+   // console.log(todaysMilli);
 
    allTodaysDate =
       "" + //turns it into a readable string
@@ -71,28 +71,70 @@ function getDate() {
    idNumber = milli + randNumber; /// log should show 6 digits (millis + randomnumber)
 }
 // this function work for the inside of the sign up card
+function passwordEncrypt() {
+   let encriptingPassword = $("#password-required").val().split("");
+   for (let i = 0; i < encriptingPassword.length; i++) {
+      const character = encriptingPassword[i];
+      // captial letters in ascii start from 65 to 90
+      // lower case letters in ascii start from 97 to 122
+      // numbers in ascii start from 48 to 57
+      // if charCodeAt is not in range of a number will return NaN. 0 is the default index
+      if (
+         (encriptingPassword[i].charCodeAt(0) >= 65 &&
+            encriptingPassword[i].charCodeAt(0) <= 90) ||
+         (encriptingPassword[i].charCodeAt(0) >= 97 &&
+            encriptingPassword[i].charCodeAt(0) <= 122) ||
+         (encriptingPassword[i].charCodeAt(0) >= 48 &&
+            encriptingPassword[i].charCodeAt(0) <= 57)
+      ) {
+         if (character === "z") {
+            // make sure the lowercase z wraps around to the lowercase a
+            encriptingPassword[i] = "a";
+         } else if (character === "Z") {
+            // make sure the capital Z wraps around to the captial A
+            encriptingPassword[i] = "A";
+         } else if (character === "9") {
+            // make sure the 9 wraps around the 0 instead of moving to the number from the ascii list.
+            encriptingPassword[i] = "0";
+         } else {
+            // takes the number and coverts it to a string from the ascii list and then increases the index by 1 to go through the condition.
+            encriptingPassword[i] = String.fromCharCode(
+               encriptingPassword[i].charCodeAt(0) + 1
+            );
+         }
+      }
+   }
+   return encriptingPassword.join("");
+}
 
 $("#lets-go").click(function () {
    let emailInput = $("#email-identity").val(); // .val gets the value of the user entered
    console.log(emailInput);
-
-   let emailLength = emailInput.length; // .length gets the length of a string
-   // console.log(emailLength);
+   let emailLocalPart = emailInput.split("@")[0]; // splits the emailInput into an array and only focus everything before the @ symbol
+   let brokenDownChars = emailLocalPart.split(""); // split the emailInput into individual characters into an array.
+   const uniqueChars = brokenDownChars.filter((char, index, arr) => {
+      // brokenDownChars is being filtered with three parameters. character, position of the character and the orginal array.
+      if (arr.indexOf(char) === index) {
+         // from the original array if any char matches the index then return true, otherwise return false
+         return true;
+      } else {
+         return false;
+      }
+   });
+   console.log(uniqueChars);
 
    let passwordInput = $("#password-required").val(); // . val gets the value from the user on the password box
    console.log(passwordInput);
-   console.log("includes", passwordInput.includes(commonPasswords));
-   let passwordLength = passwordInput.length; // .length grabs the amount of characters  of string
-   // console.log(passwordLength);
-   let localPart = emailInput.split("@")[0]; //
 
-   if (emailLength === 0) {
+   let common = commonPasswords.filter((word) => word === passwordInput); //if the word of matches user input then it will be placed in the common array.
+
+   if (emailInput.length === 0) {
       // make sure if emailLength equals 0, then the if statement will run test under its condition
       $("#email-identity").addClass("is-invalid"); //.addClass will pull up the id from the html. then the in-valid will trigger the empty field box
       $("#error-email").html("Please enter your email address."); // error message pop up in red if there is no characters
-   } else if (emailLength) {
+   } else if (uniqueChars.length < 3) {
       $("#email-identity").addClass("is-invalid");
-      $("#error-email").html("You need to enter at least 3 unique characters");
+      $("#error-email").html("Email must have at least 3 unique characters");
    } else {
       // if the conditon on the if are not met, then else will run test
       $("#email-identity").removeClass("is-invalid"); //. removeClass will take down whatever is inside of the parathesis
@@ -100,7 +142,7 @@ $("#lets-go").click(function () {
       $("#error-email").html(""); // the error message will not appear.
    }
 
-   if (passwordLength === 0) {
+   if (passwordInput.length === 0) {
       // make sure if passwordInput equals 0 the if statement will run test under its condition
       $("#password-required").addClass("is-invalid"); // addClass will take is-valid and let the password box work properly
       $("#invalid-characters").html("Please enter password."); // error message will appear
@@ -111,12 +153,13 @@ $("#lets-go").click(function () {
       $("#invalid-characters").html(
          "Your password must be at least 9 characters."
       ); // error message will appear
-   } else if (passwordInput.indexOf(localPart) !== -1) {
+   } else if (passwordInput.indexOf(emailLocalPart) !== -1) {
       $("#password-required").addClass("is-invalid");
       $("#invalid-characters").html(
          "Your email address cannot be used in your password"
       );
-   } else if (commonPasswords.includes(passwordInput)) {
+   } else if (common.length > 0) {
+      // if the common length is greater than 0, then a match was made.
       $("#password-required").addClass("is-invalid");
       $("#invalid-characters").html("You've entered a common password");
    } else {
@@ -125,14 +168,14 @@ $("#lets-go").click(function () {
       $("#password-required").removeClass("is-invalid"); // will remove the bootstrap error class
       $("#password-required").addClass("is-valid"); // will validate the password box to work
       $("#invalid-characters").html(""); // wont display any error message
-   }
 
-   console.log({
-      _id: idNumber,
-      email: emailInput,
-      password: passwordInput,
-      CreatedOn: allTodaysDate,
-   });
+      console.log({
+         _id: idNumber,
+         email: emailInput,
+         password: passwordEncrypt(),
+         CreatedOn: allTodaysDate,
+      });
+   }
 });
 
 // this for the create-answer html page. keeps count on how many characters are placed from the user.
