@@ -72,39 +72,39 @@ function getDate() {
 }
 // this function work for the inside of the sign up card
 function passwordEncrypt() {
-   let encriptingPassword = $("#password-required").val().split("");
-   for (let i = 0; i < encriptingPassword.length; i++) {
-      const character = encriptingPassword[i];
+   let encryptingPassword = $("#password-required").val().split("");
+   for (let i = 0; i < encryptingPassword.length; i++) {
+      const character = encryptingPassword[i];
       // captial letters in ascii start from 65 to 90
       // lower case letters in ascii start from 97 to 122
       // numbers in ascii start from 48 to 57
       // if charCodeAt is not in range of a number will return NaN. 0 is the default index
       if (
-         (encriptingPassword[i].charCodeAt(0) >= 65 &&
-            encriptingPassword[i].charCodeAt(0) <= 90) ||
-         (encriptingPassword[i].charCodeAt(0) >= 97 &&
-            encriptingPassword[i].charCodeAt(0) <= 122) ||
-         (encriptingPassword[i].charCodeAt(0) >= 48 &&
-            encriptingPassword[i].charCodeAt(0) <= 57)
+         (encryptingPassword[i].charCodeAt(0) >= 65 &&
+            encryptingPassword[i].charCodeAt(0) <= 90) ||
+         (encryptingPassword[i].charCodeAt(0) >= 97 &&
+            encryptingPassword[i].charCodeAt(0) <= 122) ||
+         (encryptingPassword[i].charCodeAt(0) >= 48 &&
+            encryptingPassword[i].charCodeAt(0) <= 57)
       ) {
          if (character === "z") {
             // make sure the lowercase z wraps around to the lowercase a
-            encriptingPassword[i] = "a";
+            encryptingPassword[i] = "a";
          } else if (character === "Z") {
             // make sure the capital Z wraps around to the captial A
-            encriptingPassword[i] = "A";
+            encryptingPassword[i] = "A";
          } else if (character === "9") {
             // make sure the 9 wraps around the 0 instead of moving to the number from the ascii list.
-            encriptingPassword[i] = "0";
+            encryptingPassword[i] = "0";
          } else {
             // takes the number and coverts it to a string from the ascii list and then increases the charCode by 1 to go through the condition.
-            encriptingPassword[i] = String.fromCharCode(
-               encriptingPassword[i].charCodeAt(0) + 1
+            encryptingPassword[i] = String.fromCharCode(
+               encryptingPassword[i].charCodeAt(0) + 1
             );
          }
       }
    }
-   return encriptingPassword.join("");
+   return encryptingPassword.join("");
 }
 
 $("#lets-go").click(function () {
