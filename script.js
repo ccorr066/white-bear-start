@@ -97,7 +97,7 @@ function passwordEncrypt() {
             // make sure the 9 wraps around the 0 instead of moving to the number from the ascii list.
             encriptingPassword[i] = "0";
          } else {
-            // takes the number and coverts it to a string from the ascii list and then increases the index by 1 to go through the condition.
+            // takes the number and coverts it to a string from the ascii list and then increases the charCode by 1 to go through the condition.
             encriptingPassword[i] = String.fromCharCode(
                encriptingPassword[i].charCodeAt(0) + 1
             );
@@ -127,7 +127,7 @@ $("#lets-go").click(function () {
    console.log(passwordInput);
 
    let common = commonPasswords.filter((word) => word === passwordInput); //if the word of matches user input then it will be placed in the common array.
-
+   // with filter if its true, it will keep in the array. if false, it will discard it
    if (emailInput.length === 0) {
       // make sure if emailLength equals 0, then the if statement will run test under its condition
       $("#email-identity").addClass("is-invalid"); //.addClass will pull up the id from the html. then the in-valid will trigger the empty field box
