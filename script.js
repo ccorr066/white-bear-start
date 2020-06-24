@@ -126,7 +126,9 @@ $("#lets-go").click(function () {
    let passwordInput = $("#password-required").val(); // . val gets the value from the user on the password box
    console.log(passwordInput);
 
-   let common = commonPasswords.filter((word) => word === passwordInput); //if the word of matches user input then it will be placed in the common array.
+   let filteredPasswords = commonPasswords.filter(
+      (word) => word === passwordInput
+   ); //if the word of matches user input then it will be placed in the common array.
    // with filter if its true, it will keep in the array. if false, it will discard it
    if (emailInput.length === 0) {
       // make sure if emailLength equals 0, then the if statement will run test under its condition
@@ -158,7 +160,7 @@ $("#lets-go").click(function () {
       $("#invalid-characters").html(
          "Your email address cannot be used in your password"
       );
-   } else if (common.length > 0) {
+   } else if (filteredPasswords.length > 0) {
       // if the common length is greater than 0, then a match was made.
       $("#password-required").addClass("is-invalid");
       $("#invalid-characters").html("You've entered a common password");
@@ -173,7 +175,7 @@ $("#lets-go").click(function () {
          _id: idNumber,
          email: emailInput,
          password: passwordEncrypt(),
-         CreatedOn: allTodaysDate,
+         CreatedOn: Number(allTodaysDate),
       });
    }
 });
